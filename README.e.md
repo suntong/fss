@@ -19,7 +19,7 @@ The `fss` is a tool to summarize files and diretories in the file system.
 
 ### $ {{shell "fss grps" | color "sh"}}
 
-### $ {{shell "fss dirs" | color "sh"}}
+### $ {{shell "fss dirs -h" | color "sh"}}
 
 
 # Examples

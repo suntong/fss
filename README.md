@@ -11,7 +11,7 @@
 - [Usage](#usage)
   - [$ fss](#-fss)
   - [$ fss grps](#-fss-grps)
-  - [$ fss dirs](#-fss-dirs)
+  - [$ fss dirs -h](#-fss-dirs--h)
 - [Examples](#examples)
   - [$ fss grps .](#-fss-grps-)
   - [$ ls -ld `ls -1d /etc/* | fss dirs`](#-ls--ld-`ls--1d-etc*--fss-dirs`)
@@ -61,9 +61,19 @@ Options:
   -l, --limit[=3]   limit listing the files in the same group to
 ```
 
-### $ fss dirs
+### $ fss dirs -h
 ```sh
-sh
+Pick out dirs from the input
+
+Pick out dirs, given a list of files and diretories from stdin
+
+Usage:
+  mlocate SRC-PATH | sort | fss dirs
+
+Options:
+
+  -h, --help      display help information
+  -v, --verbose   Verbose mode (Multiple -v options increase the verbosity.)
 ```
 
 
@@ -73,7 +83,7 @@ sh
 ```sh
 279      0M [.gitignore]: .gitignore
          1064      0M [LICENSE]: LICENSE
-          606      0M [README.]: README.e.md, README.md
+          609      0M [README.]: README.e.md, README.md
          1518      0M [cmdDirs.go]: cmdDirs.go
          2553      0M [cmdGrps.go]: cmdGrps.go
       6880409      6M [fss]: fss, fss.yaml, fssCLIDef.go, ...
