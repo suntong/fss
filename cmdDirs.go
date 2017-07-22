@@ -54,7 +54,7 @@ var commonExts set.Set = set.NewSet0From([]string{
 
 func dirsCLI(ctx *cli.Context) error {
 	rootArgv = ctx.RootArgv().(*rootT)
-	//argv := ctx.Argv().(*dirsT)
+	// argv := ctx.Argv().(*dirsT)
 	// fmt.Printf("[dirs]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 	return cmdDirs()
 }
@@ -65,10 +65,11 @@ func cmdDirs() error {
 
 	// == Match & Process
 	s.AppendStmt(nil, func(s *awk.Script) {
-		print(s.NR)
+		if rootArgv.Verbose.Value() >= 2 {
+			print(s.NR, " ")
+		}
 		// == skip all files
 		fn := s.F(0).String()
-		print(" ")
 		// with known extension
 		if commonExts.Has(filepath.Ext(fn)) {
 			s.Next()
