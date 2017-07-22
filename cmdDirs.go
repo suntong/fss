@@ -65,14 +65,19 @@ func cmdDirs() error {
 
 	// == Match & Process
 	s.AppendStmt(nil, func(s *awk.Script) {
+		print(s.NR)
 		// == skip all files
 		fn := s.F(0).String()
+		print(" ")
 		// with known extension
 		if commonExts.Has(filepath.Ext(fn)) {
 			s.Next()
 		}
 		// or not a dir
-		stt, _ := os.Stat(fn)
+		stt, err := os.Stat(fn)
+		if err != nil {
+			s.Next()
+		}
 		if !stt.IsDir() {
 			s.Next()
 		}
