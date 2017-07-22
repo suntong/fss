@@ -9,6 +9,7 @@ Text: Tool to summarize files and diretories in the file system
 Global: true
 #NumOption: cli.AtLeast(1)
 NumArg: cli.AtLeast(1)
+#CanSubRoute: true
 
 UsageLead: "Usage:\\n  fss COMMAND"
 
@@ -29,6 +30,11 @@ Command:
     #NumOption: cli.AtLeast(1)
 
     Options:
+      - Name: Limit
+        Type: int
+        Flag: l,limit
+        Usage: limit listing the files in the same group to
+        Value: 3
 
   - Name: dirs
     Desc: "Pick out dirs from the input"

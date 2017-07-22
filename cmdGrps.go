@@ -43,12 +43,12 @@ func grpsCLI(ctx *cli.Context) error {
 	os.Chdir(ctx.Args()[0])
 
 	files, _ := ioutil.ReadDir("./")
-	reportByGroup(files)
+	reportByGroup(files, argv.Limit)
 
 	return nil
 }
 
-func reportByGroup(files []os.FileInfo) {
+func reportByGroup(files []os.FileInfo, showLimit int) {
 	var cg CurrentGrp
 	for _, f := range files {
 		if f.IsDir() {
@@ -67,7 +67,11 @@ func reportByGroup(files []os.FileInfo) {
 			// match up to 3/4 of file name lengh, same group
 			//fmt.Printf("] %v\n", cg)
 			cg.Prefix = cg.Prefix[:m]
-			cg.Files = append(cg.Files, f.Name())
+			if len(cg.Files) == showLimit {
+				cg.Files = append(cg.Files, "...")
+			} else if len(cg.Files) < showLimit {
+				cg.Files = append(cg.Files, f.Name())
+			}
 			cg.Size += s.Size()
 		} else {
 			// different group, output previous group then reset

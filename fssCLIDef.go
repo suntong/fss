@@ -86,6 +86,7 @@ var root = &cli.Command{
 //  }
 
 type grpsT struct {
+	Limit int `cli:"l,limit" usage:"limit listing the files in the same group to" dft:"3"`
 }
 
 var grpsDef = &cli.Command{
