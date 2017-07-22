@@ -37,7 +37,7 @@ type CurrentGrp struct {
 func grpsCLI(ctx *cli.Context) error {
 	rootArgv = ctx.RootArgv().(*rootT)
 	argv := ctx.Argv().(*grpsT)
-	fmt.Printf("[grps]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+	//fmt.Printf("[grps]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 
 	// changes the current working directory to the given directory
 	os.Chdir(ctx.Args()[0])
